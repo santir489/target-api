@@ -25,12 +25,24 @@ gem 'puma', '~> 3.11'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'devise'
+gem 'devise_token_auth', '~> 1.1'  
+gem 'rack-cors'  
+gem 'jbuilder'
+gem 'pry', '~> 0.12.2'
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 3.8' 
+end
+
+group  :test do
+  gem 'shoulda-matchers', '~> 3.1.1'
+  gem 'factory_bot_rails', '4.8.2'
 end
 
 group :development do
@@ -38,9 +50,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'faker'
-  gem 'rack-cors'
-  gem 'devise_token_auth', '~> 1.1'
-  gem 'devise'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
