@@ -1,37 +1,30 @@
 module Api
-    module V1
-        class TargetsController < ApplicationController
+  module V1
+    class TargetsController < ApplicationController
+      before_action :authenticate_user!
+      helper_method :target
+      
+      def index
+        @targets = current_user.targets      
+      end
 
-            before_action :authenticate_user!
+      def create           
+        @target = current_user.targets.create!(target_params)
+      end
 
-            def index
-                @targets = current_user.targets      
-            end
-                       
+      def destroy      
+        target.destroy               
+      end
 
-            def create    
+      private
 
-                if current_user.targets.length <10
-                    @target = current_user.targets.create!(target_params)                                             
-                else
-                    render json: {status: 'FAIL', message: 'Target maximum reached'}, status: :ok
-                end
-            end
+      def target
+        @target ||= Target.find(params[:id])
+      end
 
-
-            def destroy
-                #@target.destroy
-                @target= Target.find(params[:id])                
-                @target.destroy
-            end
-
-
-            private
-                def target_params
-                    params.require(:target).permit(:title, :topic, :latitude, :longitude, :length) 
-                end
-            
-
-        end
+      def target_params
+        params.require(:target).permit(:title, :topic, :latitude, :longitude, :length) 
+      end
     end
+  end
 end

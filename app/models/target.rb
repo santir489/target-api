@@ -1,8 +1,17 @@
 class Target < ApplicationRecord
-  belongs_to :user  
-  #validates :user_id, presence: true
-  validates :title, length: { maximum: 140 },uniqueness: { case_sensitive: false }
-  validates_presence_of :title, :topic, :length, :latitude, :longitude
+  enum topic: { football: 0, travel: 1, politics: 2, art: 3, dating: 4, music: 5, movies: 6, series: 7, food: 8 }
+  
+  belongs_to :user    
+  
+  validates :title, length: { maximum: 140 }, uniqueness: { case_sensitive: false }, presence: true
+  validates :topic, :length, :latitude, :longitude, presence: true
+  validate :target_maximum, on: :create
 
-  enum topic: [:football, :travel, :politics, :art, :dating, :music, :movies, :series, :food]
+  private
+  
+  def target_maximum
+    if user.targets.length > 9
+      errors.add(:target_maximum, I18n.t('api.errors.maximum_reached'))
+    end
+  end  
 end

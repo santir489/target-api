@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2019_06_06_190808) do
 
   create_table "targets", force: :cascade do |t|
     t.text "title", null: false
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.integer "length", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

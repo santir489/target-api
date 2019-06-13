@@ -4,8 +4,7 @@ class AddValidationTarget < ActiveRecord::Migration[5.2]
     change_column_null :targets, :latitude, false
     change_column_null :targets, :longitude, false
     change_column_null :targets, :title, false
-    change_column_null :targets, :topic, false
-    change_column_null :targets, :user_id, false
+    change_column_null :targets, :topic, false  
   end
 end
 
