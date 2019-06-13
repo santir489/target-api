@@ -17,7 +17,7 @@ describe 'GET /api/v1/targets', :type => :request do
       get api_v1_targets_path, headers: user.create_new_auth_token, as: :json
     end
 
-    it 'returns a saccessful response' do     
+    it 'returns a successful response' do     
       subject
       expect(response).to be_successful
     end
