@@ -6,13 +6,14 @@ module Api
       def show; end
 
       def update
-        current_user.update!(user_param) 
+        current_user.update!(user_params)
+        render :show
       end
 
       private 
 
-      def user_param
-        params.require(:user).permit(:email, :gender, :name) 
+      def user_params
+        params.require(:user).permit(:email, :gender, :name)
       end
     end
   end

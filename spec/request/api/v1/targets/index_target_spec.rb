@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'GET /api/v1/targets', :type => :request do    
+describe 'GET /api/v1/targets', type: :request do    
   let(:user) { create(:user) }
   let!(:targets) do
     create_list(:target, 5, user: user)

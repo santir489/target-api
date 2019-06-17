@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-describe 'POST /api/v1/targets', :type => :request do  
-
+describe 'POST /api/v1/targets', type: :request do  
   let(:user) { create(:user) }
   let(:target) { attributes_for(:target, user: user) }
 

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       resources :targets
-      resource :user,  only: [:show, :update]
+      resource :user,  only: %i[show update]
     end
   end  
 end
