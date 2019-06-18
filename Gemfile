@@ -26,6 +26,7 @@ gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise', '~> 4.2'
 gem 'devise_token_auth', '~> 1.1'  
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'jbuilder', '~> 2.9', '>= 2.9.1'
 gem 'pry', '~> 0.12.2'
 gem 'rack-cors'  
