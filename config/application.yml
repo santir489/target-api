@@ -1,5 +1,0 @@
-SENDGRID_USERNAME: 'santiramirez'
-SENDGRID_PASSWORD: 'password1234'
-SENDGRID_ADDRESS: 'smtp.sendgrid.net'
-SENDGRID_DOMAIN: 'target.com'
-SENDGRID_PORT: '587'
