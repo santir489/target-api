@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'DELETE /api/v1/targets', :type => :request do  
+describe 'DELETE /api/v1/targets', type: :request do  
   let(:user) { create(:user) }  
   let!(:target) { create(:target, user: user) }
 

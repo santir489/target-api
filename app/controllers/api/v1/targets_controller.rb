@@ -5,15 +5,15 @@ module Api
       helper_method :target
       
       def index
-        @targets = current_user.targets      
+        @targets = current_user.targets
       end
 
-      def create           
+      def create
         @target = current_user.targets.create!(target_params)
       end
 
-      def destroy      
-        target.destroy               
+      def destroy
+        target.destroy
       end
 
       private
@@ -23,7 +23,7 @@ module Api
       end
 
       def target_params
-        params.require(:target).permit(:title, :topic, :latitude, :longitude, :length) 
+        params.require(:target).permit(:title, :topic, :latitude, :longitude, :length)
       end
     end
   end
