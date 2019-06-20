@@ -5,7 +5,11 @@ Rails.application.routes.draw do
  
   namespace 'api' do
     namespace 'v1' do
-      resources :targets
+      resources :targets do
+        collection do
+          get 'compatibles'
+        end
+      end
       resource :user,  only: %i[show update]
     end
   end  

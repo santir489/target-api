@@ -12,6 +12,11 @@ module Api
         @target = current_user.targets.create!(target_params)
       end
 
+      def compatibles
+        @targets = current_user.targets_match
+        render :index
+      end
+
       def destroy
         target.destroy
       end

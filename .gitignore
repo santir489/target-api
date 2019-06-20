@@ -28,4 +28,6 @@
 
 config/application.yml
 
+config/database.yml
+
 .DS_Store
