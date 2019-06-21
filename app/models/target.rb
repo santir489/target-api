@@ -1,9 +1,9 @@
 class Target < ApplicationRecord
-  acts_as_mappable :default_units => :km,
-                    :default_formula => :flat,
-                    :distance_field_name => :distance,
-                    :lat_column_name => :latitude,
-                    :lng_column_name => :longitude
+  acts_as_mappable  default_units:       :km,
+                    default_formula:     :flat,
+                    distance_field_name: :distance,
+                    lat_column_name:     :latitude,
+                    lng_column_name:     :longitude
 
   enum topic: { football: 0, travel: 1, politics: 2, art: 3, dating: 4, music: 5, movies: 6, series: 7, food: 8 }
   
@@ -14,8 +14,8 @@ class Target < ApplicationRecord
   validate :target_maximum, on: :create
 
   def compatible_targets
-   Target.where.not(user_id: user_id).where(topic: topic).select do |target|
-      target.distance_to(self) < (target.length + length)
+    Target.where.not(user_id: user_id).where(topic: topic).select do |target|
+      target.distance_to(self) * 1000 <= (target.length + length)
     end
   end
 

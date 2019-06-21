@@ -5,9 +5,9 @@ Rails.application.routes.draw do
  
   namespace 'api' do
     namespace 'v1' do
-      resources :targets do
+      resources :targets, only: %i[index create destroy] do
         collection do
-          get 'compatibles'
+          get :compatibles
         end
       end
       resource :user,  only: %i[show update]
