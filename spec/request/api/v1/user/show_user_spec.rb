@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'GET /api/v1/user', type: :request do 
+describe 'GET /api/v1/user', type: :request do
   context 'when the request is not valid' do
     it 'returns unauthorized response' do        
       get api_v1_user_path,  as: :json
