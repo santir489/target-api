@@ -6,13 +6,13 @@ class User < ActiveRecord::Base
         :confirmable
   include DeviseTokenAuth::Concerns::User
 
-  before_create :create_onesignal
-
   enum gender: { female: 0, male: 1 }
 
   has_many :targets, dependent: :destroy
 
   validates :name, :gender, presence: true
+
+  before_create :create_onesignal
 
   def targets_match
     targets.flat_map { |target| target.compatible_targets }
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   private
 
-  def create_onesignal    
-    self.id_onesignal=NotifyCompatible.create_user(self.email)
+  def create_onesignal
+    self.id_onesignal = NotificationService.create_user(email)
   end
 end

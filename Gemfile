@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.9', '>= 2.9.1'
 gem 'one_signal', '~> 1.2'
 gem 'pry', '~> 0.12.2'
 gem 'rack-cors'  
+gem 'webmock', '~> 3.6'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'

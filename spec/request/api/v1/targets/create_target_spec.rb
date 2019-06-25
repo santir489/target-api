@@ -33,6 +33,11 @@ describe 'POST /api/v1/targets', type: :request do
       expect(response).to have_http_status(:bad_request)
     end
 
+    it 'calls NotifyCompatiblesJob' do
+      expect(NotifyCompatiblesJob).to receive(:perform_later).once
+      subject
+    end
+
     context 'when user target maximum was already reached' do
 
       before(:each) do        

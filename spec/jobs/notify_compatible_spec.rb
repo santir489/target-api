@@ -1,0 +1,26 @@
+require 'rails_helper'
+
+describe NotifyCompatiblesJob, type: :job do
+  let(:user) { create(:user) }
+  let!(:target) { create(:target, user: user, latitude: 10.00, longitude: 11.00, topic: 'art',  length: 500000) }
+  let(:notify_compatible) { NotifyCompatiblesJob.new(target) }
+  
+  context 'whene there are no targets compatibles' do
+    it 'does not notify user' do
+      ActiveJob::Base.queue_adapter = :test
+      expect(NotificationService).not_to receive(:send_notification)
+      notify_compatible.perform(target)
+    end
+  end
+
+  context 'when there are targets' do
+    let(:user2) { create(:user) }
+    let!(:target2) { create(:target, user: user2, latitude: 10.00, longitude: 11.00, topic: 'art',  length: 500000) }
+
+    it 'does notify user' do
+      ActiveJob::Base.queue_adapter = :test
+      expect(NotificationService).to receive(:send_notification).with([MockHelper::PLAYER_ID], I18n.t('notification.compatible.message'))
+      notify_compatible.perform(target)
+    end
+  end
+end

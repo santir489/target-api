@@ -1,4 +1,4 @@
-module NotifyCompatible
+module NotificationService
     extend self
 
     APP_ID = ENV['ONESIGNAL_APP_ID']
@@ -7,9 +7,10 @@ module NotifyCompatible
       params = {
         app_id: APP_ID,
         identifier: email,
-        device_type: 5
+        device_type: 5 # chrome type
       }
       response = OneSignal::Player.create(params: params)
+      
       JSON.parse(response.body)['id']
     end
 
@@ -21,6 +22,7 @@ module NotifyCompatible
         },
         include_player_ids: users_id
       }
+
       OneSignal::Notification.create(params: params)
     end
 end
