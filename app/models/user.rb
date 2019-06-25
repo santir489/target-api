@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   has_many :targets, dependent: :destroy
 
   validates :name, :gender, presence: true
+
+  def targets_match
+    targets.flat_map { |target| target.compatible_targets }
+  end
 end
