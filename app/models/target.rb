@@ -11,12 +11,18 @@ class Target < ApplicationRecord
   
   validates :title, length: { maximum: 140 }, uniqueness: { case_sensitive: false }, presence: true
   validates :topic, :length, :latitude, :longitude, presence: true
-  validate :target_maximum, on: :create
+  validate  :target_maximum, on: :create
+
+  after_create :send_notify
 
   def compatible_targets
     Target.where.not(user_id: user_id).where(topic: topic).select do |target|
       target.distance_to(self) * 1000 <= (target.length + length)
     end
+  end
+
+  def send_notify
+    NotifyCompatiblesJob.perform_later(self)
   end
 
   private
