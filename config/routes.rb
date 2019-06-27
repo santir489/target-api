@@ -10,7 +10,9 @@ Rails.application.routes.draw do
           get :compatibles
         end
       end
-      resource :user,  only: %i[show update]
+      resource :user,  only: %i[show update] do
+        post :facebook
+      end     
     end
   end
 end
