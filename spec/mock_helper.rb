@@ -16,7 +16,8 @@ module MockHelper
             object: 'customer'
           }.to_json,
           status: 200,
-          headers: { 'Content-Type': 'application/json' })
+          headers: { 'Content-Type': 'application/json' }
+        )
     end
   end
 end

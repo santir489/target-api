@@ -13,7 +13,7 @@ describe 'PUT /api/v1/user', type: :request do
   context 'when the request is not valid' do
     it 'returns a bad request' do
       params = { user: { email: 'mailcom' } }
-      put api_v1_user_path, params: params, headers: user.create_new_auth_token, as: :json    
+      put api_v1_user_path, params: params, headers: user.create_new_auth_token, as: :json
       expect(response).to have_http_status(:bad_request)
     end
   end

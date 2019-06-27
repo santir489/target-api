@@ -3,7 +3,7 @@ module Api
     class TargetsController < ApplicationController
       before_action :authenticate_user!
       helper_method :target
-      
+
       def index
         @targets = current_user.targets
       end
