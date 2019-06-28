@@ -28,8 +28,8 @@ class Target < ApplicationRecord
   end
 
   def target_maximum
-    if user.targets.length > 9
-      errors.add(:target_maximum, I18n.t('api.errors.maximum_reached'))
-    end
+    return unless user.targets.length > 9
+
+    errors.add(:target_maximum, I18n.t('api.errors.maximum_reached'))
   end
 end

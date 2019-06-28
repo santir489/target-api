@@ -41,14 +41,15 @@ gem 'webmock', '~> 3.6'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'reek', '~> 5.4'
   gem 'rspec-rails', '~> 3.8'
-  gem 'rubocop', '~> 0.72.0'
 end
 
 group :test do
   gem 'factory_bot_rails', '4.8.2'
   gem 'faker', '~> 1.6', '>= 1.6.3'
+  gem 'rails_best_practices', '~> 1.19', '>= 1.19.4'
+  gem 'reek', '~> 5.4'
+  gem 'rubocop', '~> 0.72.0'
   gem 'shoulda-matchers', '~> 3.1.1'
 end
 

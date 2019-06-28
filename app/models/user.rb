@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   after_create :subscribe_user
 
   def targets_match
-    targets.flat_map { |target| target.compatible_targets }
+    targets.flat_map(&:compatible_targets)
   end
 
   private
