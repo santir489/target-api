@@ -26,13 +26,13 @@ gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.3'
 gem 'devise', '~> 4.2'
-gem 'devise_token_auth', '~> 1.1'  
+gem 'devise_token_auth', '~> 1.1'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'geokit-rails', '~> 2.3', '>= 2.3.1'
 gem 'jbuilder', '~> 2.9', '>= 2.9.1'
 gem 'one_signal', '~> 1.2'
 gem 'pry', '~> 0.12.2'
-gem 'rack-cors'  
+gem 'rack-cors'
 gem 'webmock', '~> 3.6'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
@@ -41,11 +41,12 @@ gem 'webmock', '~> 3.6'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails', '~> 3.8' 
+  gem 'reek', '~> 5.4'
+  gem 'rspec-rails', '~> 3.8'
   gem 'rubocop', '~> 0.72.0'
 end
 
-group  :test do
+group :test do
   gem 'factory_bot_rails', '4.8.2'
   gem 'faker', '~> 1.6', '>= 1.6.3'
   gem 'shoulda-matchers', '~> 3.1.1'
@@ -55,7 +56,7 @@ group :development do
   gem 'letter_opener', '~> 1.7'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'  
+  gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
