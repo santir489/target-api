@@ -1,5 +1,5 @@
 module MockHelper
-  PLAYER_ID = 'b5e295e6-5b2d-45e7-9c86-b1b3396ee80a'.freeze 
+  PLAYER_ID = 'b5e295e6-5b2d-45e7-test-aaaaaaaaaaa'.freeze 
 
   RSpec.configure do |config|
     config.before :each do
@@ -9,8 +9,8 @@ module MockHelper
           headers: { 'Content-Type': 'application/json' }
         )
 
-      stub_request(:post, "https://onesignal.com/api/v1/players").
-        to_return(
+      stub_request(:post, 'https://onesignal.com/api/v1/players')
+        .to_return(
           body: {
             id: PLAYER_ID,
             object: 'customer'

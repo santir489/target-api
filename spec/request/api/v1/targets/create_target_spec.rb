@@ -38,6 +38,10 @@ describe 'POST /api/v1/targets', type: :request do
       subject
     end
 
+    it 'enques a job to notify compatibles targets' do
+      expect { subject }.to have_enqueued_job(NotifyCompatiblesJob)
+    end
+
     context 'when user target maximum was already reached' do
 
       before(:each) do        

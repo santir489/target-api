@@ -21,11 +21,11 @@ class Target < ApplicationRecord
     end
   end
 
+  private
+
   def send_notify
     NotifyCompatiblesJob.perform_later(self)
   end
-
-  private
 
   def target_maximum
     if user.targets.length > 9

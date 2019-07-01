@@ -34,5 +34,6 @@ en:
     errors:
       maximum_reached: 'Target maximum reached'
   notification:
-    compatible:
-      message: 'Yey! You have a new match'
+    target:
+      compatible:
+        message: 'Yey! You have a new match'

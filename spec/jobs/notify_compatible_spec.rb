@@ -7,7 +7,6 @@ describe NotifyCompatiblesJob, type: :job do
   
   context 'whene there are no targets compatibles' do
     it 'does not notify user' do
-      ActiveJob::Base.queue_adapter = :test
       expect(NotificationService).not_to receive(:send_notification)
       notify_compatible.perform(target)
     end
@@ -18,8 +17,8 @@ describe NotifyCompatiblesJob, type: :job do
     let!(:target2) { create(:target, user: user2, latitude: 10.00, longitude: 11.00, topic: 'art',  length: 500000) }
 
     it 'does notify user' do
-      ActiveJob::Base.queue_adapter = :test
-      expect(NotificationService).to receive(:send_notification).with([MockHelper::PLAYER_ID], I18n.t('notification.compatible.message'))
+      expect(NotificationService).to receive(:send_notification).with([MockHelper::PLAYER_ID],
+                                             I18n.t('notification.target.compatible.message'))
       notify_compatible.perform(target)
     end
   end
