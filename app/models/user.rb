@@ -21,6 +21,6 @@ class User < ActiveRecord::Base
   private
 
   def subscribe_user
-    SubscribeUserJob.perform_now(self)
+    SubscribeUserJob.perform_later(self)
   end
 end

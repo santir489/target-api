@@ -10,11 +10,6 @@ describe NotificationService do
       expect(OneSignal::Player).to receive(:create).once.and_return(response)
       subject
     end
-
-    it 'returns id_onesignal' do
-      subject
-      expect(user).to have_attributes(id_onesignal: MockHelper::PLAYER_ID)
-    end
   end
 
   describe 'send_notification' do

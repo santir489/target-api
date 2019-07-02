@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe SubscribeUserJob, type: :job do
-  let!(:user) { create(:user) } 
+  let!(:user) { create(:user) }
   let(:suscribe_user_job) { SubscribeUserJob.new(user) }
 
   it 'does subscribe user' do
