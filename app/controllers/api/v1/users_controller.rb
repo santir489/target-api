@@ -10,19 +10,7 @@ module Api
         render :show
       end
 
-<<<<<<< HEAD
-<<<<<<< HEAD
       private
-=======
-      def facebook
-        user_params = FacebookService.new(params[:access_token]).profile
-        puts '------------- KOALA -------------------- KOALA -------------------- KOALA ---------'
-      end
-
-=======
->>>>>>> develop feature
-      private 
->>>>>>> wip
 
       def user_params
         params.require(:user).permit(:email, :gender, :name)

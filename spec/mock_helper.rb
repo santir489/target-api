@@ -1,5 +1,9 @@
 module MockHelper
   PLAYER_ID = 'b5e295e6-5b2d-45e7-test-aaaaaaaaaaa'.freeze
+  FACEBOOK_ACCESS_TOKEN = '123456789'.freeze
+  FACEBOOK_USER_ID = '11111111111111111'.freeze
+  FACEBOOK_USER_NAME = 'John Doe'.freeze
+  FACEBOOK_USER_GENDER = 'male'.freeze
 
   RSpec.configure do |config|
     config.before :each do
@@ -16,7 +20,17 @@ module MockHelper
             object: 'customer'
           }.to_json,
           status: 200,
-          headers: { 'Content-Type': 'application/json' }
+          headers: { 'Content-Type': 'application/json' })
+
+      stub_request(:get, 'https://graph.facebook.com/me')
+        .with(query: hash_including(access_token: FACEBOOK_ACCESS_TOKEN, fields: 'gender,name'))
+        .to_return(
+          body: {
+            id: FACEBOOK_USER_ID,
+            name: FACEBOOK_USER_NAME,
+            gender: FACEBOOK_USER_GENDER
+          }.to_json,
+          status: 200
         )
     end
   end
