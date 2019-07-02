@@ -4,7 +4,6 @@ class FacebookService
   end
 
   def profile
-    @graph = Koala::Facebook::API.new(access_token)
-    profile = @graph.get_object("me") 
+    user_params = Koala::Facebook::API.new(@access_token).get_object('me?fields=gender,name')
   end
 end

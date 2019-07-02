@@ -11,6 +11,7 @@ module Api
       end
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       private
 =======
       def facebook
@@ -18,6 +19,8 @@ module Api
         puts '------------- KOALA -------------------- KOALA -------------------- KOALA ---------'
       end
 
+=======
+>>>>>>> develop feature
       private 
 >>>>>>> wip
 
