@@ -7,18 +7,16 @@ describe 'POST /api/v1/auth/facebook', type: :request do
 
   context 'when the request is not valid' do
     let(:param) do
-      { access_token: 'invalid-token' }
+      { access_token: MockHelper::FACEBOOK_INVALID_ACCESS_TOKEN }
     end
 
     it 'returns a unauthorized response' do
-      #WebMock.allow_net_connect!
       subject
       expect(response).to have_http_status(:unauthorized)
       expect(json[:error]).to eq('Invalid OAuth access token')
     end
 
     it 'does not create user' do
-      WebMock.allow_net_connect!
       expect { subject }.to change { User.count }.by(0)
     end
   end
