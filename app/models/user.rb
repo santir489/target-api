@@ -12,7 +12,15 @@ class User < ActiveRecord::Base
 
   validates :name, :gender, presence: true
 
+  after_create :subscribe_user
+
   def targets_match
     targets.flat_map { |target| target.compatible_targets }
+  end
+
+  private
+
+  def subscribe_user
+    SubscribeUserJob.perform_later(self)
   end
 end

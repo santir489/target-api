@@ -33,3 +33,7 @@ en:
   api:
     errors:
       maximum_reached: 'Target maximum reached'
+  notification:
+    target:
+      compatible:
+        message: 'Yey! You have a new match'

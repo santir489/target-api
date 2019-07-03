@@ -29,7 +29,11 @@ describe 'POST /api/v1/auth', type: :request do
     it 'creates a user' do         
       expect { subject }.to change { User.count }.by(1)
     end
-  end  
+
+    it 'enques a job to subscribe user' do
+      expect { subject }.to have_enqueued_job(SubscribeUserJob)
+    end
+  end
 
   context 'when request is not valid' do
     before do
