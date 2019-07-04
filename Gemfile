@@ -47,7 +47,7 @@ end
 
 group :test do
   gem 'factory_bot_rails', '4.8.2'
-  gem 'faker', '~> 1.6', '>= 1.6.3'
+  gem 'faker', '~> 1.9', '>= 1.9.5'
   gem 'rails_best_practices', '~> 1.19', '>= 1.19.4'
   gem 'reek', '~> 5.4'
   gem 'rubocop', '~> 0.72.0'
