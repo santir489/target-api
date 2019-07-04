@@ -4,4 +4,4 @@ json.topic      target.topic
 json.lenght     target.length
 json.longitude  target.longitude
 json.latitude   target.latitude
-json.user_id    target.user_id    
+json.user_id    target.user_id

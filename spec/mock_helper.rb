@@ -1,5 +1,5 @@
 module MockHelper
-  PLAYER_ID = 'b5e295e6-5b2d-45e7-test-aaaaaaaaaaa'.freeze 
+  PLAYER_ID = 'b5e295e6-5b2d-45e7-test-aaaaaaaaaaa'.freeze
 
   RSpec.configure do |config|
     config.before :each do
@@ -16,7 +16,8 @@ module MockHelper
             object: 'customer'
           }.to_json,
           status: 200,
-          headers: { 'Content-Type': 'application/json' })
+          headers: { 'Content-Type': 'application/json' }
+        )
     end
   end
 end

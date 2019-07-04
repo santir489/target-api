@@ -5,6 +5,6 @@ class CreateTargets < ActiveRecord::Migration[5.2]
       t.references  :user, foreign_key: true
       t.integer     :length
       t.timestamps
-    end   
+    end
   end
 end

@@ -10,7 +10,7 @@ module NotificationService
       device_type: 5 # chrome type
     }
     response = OneSignal::Player.create(params: params)
-    
+
     JSON.parse(response.body)['id']
   end
 
@@ -26,4 +26,3 @@ module NotificationService
     OneSignal::Notification.create(params: params)
   end
 end
- 
