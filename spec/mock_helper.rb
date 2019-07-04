@@ -23,7 +23,8 @@ module MockHelper
             object: 'customer'
           }.to_json,
           status: 200,
-          headers: { 'Content-Type': 'application/json' })
+          headers: { 'Content-Type': 'application/json' }
+        )
 
       stub_request(:get, 'https://graph.facebook.com/me')
         .with(query: hash_including(access_token: FACEBOOK_ACCESS_TOKEN, fields: 'gender,name'))
