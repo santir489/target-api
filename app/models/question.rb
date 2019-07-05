@@ -4,6 +4,7 @@ class Question < ApplicationRecord
   delegate :name, to: :user, prefix: true
 
   validates :message, :email_from, presence: true
+  validates :email_from, format: { with: Devise.email_regexp }
 
   before_create :pre_create
   after_create :send_question
