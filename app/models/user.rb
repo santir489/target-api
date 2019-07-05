@@ -18,6 +18,14 @@ class User < ActiveRecord::Base
     targets.flat_map(&:compatible_targets)
   end
 
+  def self.from_provider(provider, user_params)
+    where(provider: provider, uid: user_params['id']).first_or_create do |user|
+      user.password = Devise.friendly_token[0, 20]
+      user.assign_attributes user_params.except('id')
+      user.confirm
+    end
+  end
+
   private
 
   def subscribe_user

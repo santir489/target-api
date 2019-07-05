@@ -30,9 +30,10 @@ gem 'devise_token_auth', '~> 1.1'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'geokit-rails', '~> 2.3', '>= 2.3.1'
 gem 'jbuilder', '~> 2.9', '>= 2.9.1'
+gem 'koala', '~> 3.0'
 gem 'one_signal', '~> 1.2'
 gem 'pry', '~> 0.12.2'
-gem 'rack-cors'
+gem 'rack-cors', '~> 1.0', '>= 1.0.3'
 gem 'webmock', '~> 3.6'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
@@ -40,13 +41,13 @@ gem 'webmock', '~> 3.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-byebug', '~> 3.3.0'
   gem 'rspec-rails', '~> 3.8'
 end
 
 group :test do
   gem 'factory_bot_rails', '4.8.2'
-  gem 'faker', '~> 1.6', '>= 1.6.3'
+  gem 'faker', '~> 1.9', '>= 1.9.5'
   gem 'rails_best_practices', '~> 1.19', '>= 1.19.4'
   gem 'reek', '~> 5.4'
   gem 'rubocop', '~> 0.72.0'
