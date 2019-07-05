@@ -1,9 +1,11 @@
 class FacebookService
+  attr_reader :client
+
   def initialize(access_token)
-    @access_token = access_token
+    @client = Koala::Facebook::API.new(access_token)
   end
 
   def profile
-    Koala::Facebook::API.new(@access_token).get_object('me?fields=gender,name')
+    client.get_object('me?fields=gender,name')
   end
 end
