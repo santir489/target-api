@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   has_many :targets, dependent: :destroy
   has_many :questions, dependent: :destroy
+  has_many :conversations_users
+  has_many :conversations, through: :conversations_users
 
   validates :name, :gender, presence: true
 
