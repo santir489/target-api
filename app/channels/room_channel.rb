@@ -1,7 +1,7 @@
 class RoomChannel < ApplicationCable::Channel
   # calls when a client connects to the server
   def subscribed
-    stream_for conversation if params[:room_id].present?
+    conversation ? stream_for(conversation) : reject
   end
 
   def speak(data)
