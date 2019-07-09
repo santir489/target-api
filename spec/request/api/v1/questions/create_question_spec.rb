@@ -4,10 +4,12 @@ describe 'POST /api/v1/questions', type: :request do
   let(:user) { create(:user) }
   let(:question) { build(:question, user: user) }
   let(:params) do
-    { question: {
-      email_from: question.email_from,
-      message: question.message
-    } }
+    {
+      question: {
+        email_from: question.email_from,
+        message: question.message
+      }
+    }
   end
 
   context 'when the user is not logged in' do

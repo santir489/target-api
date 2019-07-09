@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_07_03_192001) do
     t.text "message", null: false
     t.text "email_from", null: false
     t.text "email_to", null: false
-    t.boolean "sent", null: false
+    t.boolean "sent", default: false, null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

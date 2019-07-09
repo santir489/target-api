@@ -13,7 +13,6 @@ class Question < ApplicationRecord
 
   def pre_create
     self.email_to = ENV['CONTACT_ADMINISTRATOR_EMAIL']
-    self.sent = false
   end
 
   def send_question
