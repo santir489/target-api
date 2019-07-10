@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   enum gender: { female: 0, male: 1 }
 
   has_many :targets, dependent: :destroy
+  has_many :questions, dependent: :destroy
 
   validates :name, :gender, presence: true
 
