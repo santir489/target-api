@@ -7,6 +7,18 @@ class Conversation < ApplicationRecord
     users.reject { |user| user.id == other.id }.first
   end
 
+  def online_user(user)
+    conversations_user(user).online
+  end
+
+  def offline_user(user)
+    conversations_user(user).offline
+  end
+
+  def connected_user(user)
+    conversations_user(user).connected
+  end
+
   def self.create_conversation(user_one, user_two)
     return if conversation_exist(user_one, user_two)
 
@@ -20,5 +32,11 @@ class Conversation < ApplicationRecord
       return true if conversation.users.exists?(user_two.id)
     end
     false
+  end
+
+  private
+
+  def conversations_user(user)
+    conversations_users.select { |conversations_users| conversations_users.user.id == user.id }.first
   end
 end
