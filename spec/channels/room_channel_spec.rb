@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe RoomChannel, type: :channel do
   let!(:user) { create(:user) }
-  let!(:conversation) { create(:conversation) }
+  let!(:conversation) { create(:convarsation_with_users, user1: user) }
 
   before do
     stub_connection current_user: user
@@ -21,13 +21,21 @@ describe RoomChannel, type: :channel do
   end
 
   context 'when subscription is valid' do
-    it 'successfully subscribes' do
+    subject do
       subscribe(room_id: conversation.id)
+    end
+
+    it 'successfully subscribes' do
+      subject
       expect(subscription).to be_confirmed
     end
 
+    it 'connects user to conversations' do
+      expect { subject }.to change { conversation.reload.connected_user(user) }.from(false).to(true)
+    end
+
     it 'performs speak' do
-      subscribe(room_id: conversation.id)
+      subject
       perform :speak, message: 'content'
       expect(Message.last.text).to eq('content')
     end

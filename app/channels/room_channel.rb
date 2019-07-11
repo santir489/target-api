@@ -2,6 +2,11 @@ class RoomChannel < ApplicationCable::Channel
   # calls when a client connects to the server
   def subscribed
     conversation ? stream_for(conversation) : reject
+    conversation&.online_user(current_user)
+  end
+
+  def unsubscribed
+    conversation&.offline_user(current_user)
   end
 
   def speak(data)
