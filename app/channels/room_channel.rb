@@ -3,6 +3,7 @@ class RoomChannel < ApplicationCable::Channel
   def subscribed
     conversation ? stream_for(conversation) : reject
     conversation&.online_user(current_user)
+    conversation&.reset_unread(current_user)
   end
 
   def unsubscribed
@@ -18,6 +19,9 @@ class RoomChannel < ApplicationCable::Channel
       user: current_user,
       text: message
     )
+
+    other_user = conversation.other_user(current_user)
+    conversation.increase_unread(other_user) unless conversation.connected_user(other_user)
   end
 
   def conversation

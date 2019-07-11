@@ -19,6 +19,18 @@ class Conversation < ApplicationRecord
     conversations_user(user).connected
   end
 
+  def increase_unread(user)
+    conversations_user(user).increase_unread
+  end
+
+  def reset_unread(user)
+    conversations_user(user).reset_unread
+  end
+
+  def unread_messages(user)
+    conversations_user(user).unread_messages
+  end
+
   def self.create_conversation(user_one, user_two)
     return if conversation_exist(user_one, user_two)
 

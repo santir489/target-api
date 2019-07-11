@@ -4,7 +4,7 @@ describe 'GET /api/v1/conversations', type: :request do
   let!(:user) { create(:user) }
   let!(:user2) { create(:user) }
   let!(:user3) { create(:user) }
-  let!(:conversation) { create(:convarsation_with_users, user1: user, user2: user2) }
+  let!(:conversation) { create(:convarsation_with_users_and_messages, user1: user, user2: user2) }
   let!(:conversation2) { create(:convarsation_with_users, user1: user, user2: user3) }
   let!(:conversation3) { create(:convarsation_with_users, user1: user2, user2: user3) }
 
@@ -26,6 +26,7 @@ describe 'GET /api/v1/conversations', type: :request do
     it 'returns all user conversations' do
       subject
       expect(json[:conversations].pluck(:other_user)).to match_array([user2.id, user3.id])
+      expect(json[:conversations].pluck(:unread_messages)).to match_array([0, 5])
     end
   end
 end

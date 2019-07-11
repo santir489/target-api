@@ -11,4 +11,12 @@ class ConversationsUser < ApplicationRecord
   def offline
     update(connected: false)
   end
+
+  def increase_unread
+    update(unread_messages: unread_messages + 1)
+  end
+
+  def reset_unread
+    update(unread_messages: 0)
+  end
 end
