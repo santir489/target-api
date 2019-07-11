@@ -34,10 +34,19 @@ describe RoomChannel, type: :channel do
       expect { subject }.to change { conversation.reload.connected_user(user) }.from(false).to(true)
     end
 
-    it 'performs speak' do
+    it '#speak' do
       subject
       perform :speak, message: 'content'
       expect(Message.last.text).to eq('content')
+      expect(conversation.unread_messages(conversation.other_user(user))).to eq(1)
+    end
+
+    context 'when there are unread messages' do
+      let!(:conversation2) { create(:convarsation_with_users_and_messages, user1: user) }
+
+      it 'mark as read the unread messages' do
+        expect { subscribe(room_id: conversation2.id) }.to change { conversation2.reload.unread_messages(user) }.from(5).to(0)
+      end
     end
   end
 end

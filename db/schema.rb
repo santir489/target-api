@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_07_08_142609) do
     t.bigint "user_id"
     t.bigint "conversation_id"
     t.boolean "connected", default: false, null: false
+    t.integer "unread_messages", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["conversation_id"], name: "index_conversations_users_on_conversation_id"
