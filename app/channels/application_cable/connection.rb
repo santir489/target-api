@@ -8,17 +8,12 @@ module ApplicationCable
 
     private
 
-    # :reek:DuplicateMethodCall
     def find_verified_user
       access_token = request.params[:'access-token']
       client_id = request.params[:client]
       verified_user = User.find_by(uid: request.params[:uid])
 
-      if verified_user&.valid_token?(access_token, client_id)
-        verified_user
-      else
-        reject_unauthorized_connection
-      end
+      verified_user&.valid_token?(access_token, client_id) ? verified_user : reject_unauthorized_connection
     end
   end
 end

@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 2019_07_08_142609) do
   end
 
   create_table "conversations_users", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "conversation_id"
+    t.bigint "user_id", null: false
+    t.bigint "conversation_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["conversation_id"], name: "index_conversations_users_on_conversation_id"
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 2019_07_08_142609) do
 
   create_table "messages", force: :cascade do |t|
     t.text "text"
-    t.bigint "conversation_id"
-    t.bigint "user_id"
+    t.bigint "conversation_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"

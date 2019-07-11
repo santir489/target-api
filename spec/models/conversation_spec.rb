@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Conversation, type: :model do
-  describe 'validations' do
+  describe 'associations' do
     subject { build(:conversation) }
 
     it { expect(subject).to have_many(:messages) }

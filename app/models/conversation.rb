@@ -6,14 +6,14 @@ class Conversation < ApplicationRecord
   def self.create_conversation(user_one, user_two)
     return if conversation_exist(user_one, user_two)
 
-    conv = user_one.conversations.create!
-    user_two.conversations << conv
-    conv
+    conversation = user_one.conversations.create!
+    user_two.conversations << conversation
+    conversation
   end
 
   def self.conversation_exist(user_one, user_two)
-    user_one.conversations.each do |conv|
-      return true if conv.users.exists?(user_two.id)
+    user_one.conversations.each do |conversation|
+      return true if conversation.users.exists?(user_two.id)
     end
     false
   end

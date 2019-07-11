@@ -16,6 +16,6 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def conversation
-    Conversation.find_by_id(params[:room_id])
+    Conversation.find_by(id: params[:room_id])
   end
 end
