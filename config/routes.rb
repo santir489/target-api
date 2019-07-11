@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       resources :questions, only: :create
+      resources :conversations, only: :index do
+        get :messages
+      end
       resources :targets, only: %i[index create destroy] do
         collection do
           get :compatibles
