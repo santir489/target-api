@@ -41,6 +41,12 @@ describe RoomChannel, type: :channel do
       expect(conversation.unread_messages(conversation.other_user(user))).to eq(1)
     end
 
+    it '#speak notify user about unread message' do
+      expect(NotifyMessageJob).to receive(:perform_later).once
+      subject
+      perform :speak, message: 'content'
+    end
+
     context 'when there are unread messages' do
       let!(:conversation2) { create(:convarsation_with_users_and_messages, user1: user) }
 
