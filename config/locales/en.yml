@@ -37,3 +37,5 @@ en:
     target:
       compatible:
         message: 'Yey! You have a new match'
+    chat:
+      unread_messages: 'You have new messages'
