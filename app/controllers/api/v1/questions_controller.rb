@@ -1,6 +1,6 @@
 module Api
   module V1
-    class QuestionsController < ApplicationController
+    class QuestionsController < Api::V1::ApiController
       before_action :authenticate_user!
 
       def create
