@@ -51,5 +51,28 @@ describe 'POST /api/v1/targets', type: :request do
         expect(response).to have_http_status(:bad_request)
       end
     end
+
+    context 'when there are compatible targets' do
+      let(:user2) { create(:user) }
+      let!(:target2) do
+        create(:target,
+               user: user2,
+               latitude: target[:latitude],
+               longitude: target[:longitude],
+               topic: target[:topic])
+      end
+
+      it 'creates a conversation' do
+        subject
+        expect(Conversation.count).to eq(1)
+        expect(ConversationsUser.count).to eq(2)
+      end
+    end
+
+    context 'when there are not compatible targets' do
+      it 'does not create a conversation' do
+        expect { subject }.to change { Conversation.count }.by(0)
+      end
+    end
   end
 end

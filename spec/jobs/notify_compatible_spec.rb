@@ -5,7 +5,7 @@ describe NotifyCompatiblesJob, type: :job do
   let!(:target) { create(:target, user: user, latitude: 10.00, longitude: 11.00, topic: 'art', length: 500_000) }
   let(:notify_compatible) { NotifyCompatiblesJob.new(target) }
 
-  context 'whene there are no targets compatibles' do
+  context 'when there are no targets compatibles' do
     it 'does not notify user' do
       expect(NotificationService).not_to receive(:send_notification)
       notify_compatible.perform(target)

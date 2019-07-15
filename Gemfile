@@ -46,6 +46,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'action-cable-testing', '~> 0.5.0'
   gem 'factory_bot_rails', '4.8.2'
   gem 'faker', '~> 1.9', '>= 1.9.5'
   gem 'rails_best_practices', '~> 1.19', '>= 1.19.4'
