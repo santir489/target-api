@@ -34,6 +34,7 @@ en:
     errors:
       maximum_reached: 'Target maximum reached'
       user_not_conversation: 'The user is not part of this conversation'
+      users_create_conversation: 'User already has a conversation with the user'
   notification:
     target:
       compatible:

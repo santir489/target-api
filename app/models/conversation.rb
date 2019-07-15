@@ -1,7 +1,9 @@
 class Conversation < ApplicationRecord
   has_many :messages, dependent: :destroy
-  has_many :conversations_users
+  has_many :conversations_users, dependent: :destroy
   has_many :users, through: :conversations_users
+
+  validate :uniqueness_users, on: :create
 
   def other_user(other)
     users.reject { |user| user.id == other.id }.first
@@ -31,22 +33,20 @@ class Conversation < ApplicationRecord
     conversations_user(user).unread_messages
   end
 
-  def self.create_conversation(user_one, user_two)
-    return if conversation_exist(user_one, user_two)
-
-    conversation = user_one.conversations.create!
-    user_two.conversations << conversation
-    conversation
-  end
-
-  def self.conversation_exist(user_one, user_two)
-    user_one.conversations.each do |conversation|
-      return true if conversation.users.exists?(user_two.id)
+  def self.conversation_exist(users)
+    users.first.conversations.each do |conversation|
+      return true if conversation.users.exists?(users.second.id)
     end
     false
   end
 
   private
+
+  def uniqueness_users
+    return unless Conversation.conversation_exist(users)
+
+    errors.add(:uniqueness_users, I18n.t('api.errors.users_create_conversation'))
+  end
 
   def conversations_user(user)
     conversations_users.select { |conversations_users| conversations_users.user.id == user.id }.first

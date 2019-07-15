@@ -6,7 +6,7 @@ FactoryBot.define do
         user2 { create(:user) }
       end
 
-      after(:create) do |conversation, evaluator|
+      before(:create) do |conversation, evaluator|
         conversation.users << evaluator.user1
         conversation.users << evaluator.user2
       end
@@ -22,7 +22,7 @@ FactoryBot.define do
         user2_unread_messages_count { 5 }
       end
 
-      after(:create) do |conversation, evaluator|
+      before(:create) do |conversation, evaluator|
         conversation.users << evaluator.user1
         conversation.users << evaluator.user2
 

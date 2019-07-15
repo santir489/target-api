@@ -10,13 +10,6 @@ describe 'GET /api/v1/conversations/:conversation_id/messages', type: :request d
     end
   end
 
-  # context 'when the conversation does not exists' do
-  #   it 'returns ..... response' do
-  #     get api_v1_conversation_messages_path(conversation_id: 'invalid_id'), headers: user.create_new_auth_token, as: :json
-  #     expect(response).to have_http_status(:bad_request)
-  #   end
-  # end
-
   context 'when the conversation does exists and the request is valid' do
     let!(:user2) { create(:user) }
     let!(:conversation) do
