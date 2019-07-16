@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     namespace 'v1' do
       resources :questions, only: :create
       resources :conversations, only: :index do
-        get :messages
+          resources :messages, only: :index, module: :conversations
       end
       resources :targets, only: %i[index create destroy] do
         collection do

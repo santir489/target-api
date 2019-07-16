@@ -6,7 +6,7 @@ describe NotifyMessageJob, type: :job do
 
   it 'does notify user' do
     expect(NotificationService).to receive(:send_notification)
-      .with([MockHelper::PLAYER_ID], I18n.t('notification.chat.unread_messages'))
+      .with([MockHelper::PLAYER_ID], I18n.t('notification.chat.messages.unread'))
     notify_message.perform(user)
   end
 end

@@ -1,18 +1,17 @@
 FactoryBot.define do
   factory :conversation do
-    factory :convarsation_with_users do
+    trait :with_users do
       transient do
         user1 { create(:user) }
         user2 { create(:user) }
       end
 
       before(:create) do |conversation, evaluator|
-        conversation.users << evaluator.user1
-        conversation.users << evaluator.user2
+        conversation.users << [evaluator.user1, evaluator.user2]
       end
     end
 
-    factory :convarsation_with_users_and_messages do
+    trait :with_users_and_messages do
       transient do
         user1 { create(:user) }
         user2 { create(:user) }
@@ -23,8 +22,7 @@ FactoryBot.define do
       end
 
       before(:create) do |conversation, evaluator|
-        conversation.users << evaluator.user1
-        conversation.users << evaluator.user2
+        conversation.users << [evaluator.user1, evaluator.user2]
 
         create_list(:message, evaluator.user1_messages_count, user: evaluator.user1, conversation: conversation)
         create_list(:message, evaluator.user2_messages_count, user: evaluator.user2, conversation: conversation)

@@ -12,6 +12,6 @@ class Message < ApplicationRecord
   def user_in_conversation
     return if conversation.users.include?(user)
 
-    errors.add(:user_in_conversation, I18n.t('api.errors.user_not_conversation'))
+    errors.add(:user_in_conversation, I18n.t('api.errors.users.conversation.belong'))
   end
 end

@@ -3,18 +3,18 @@ class ConversationsUser < ApplicationRecord
   belongs_to :conversation
 
   def online
-    update(connected: true)
+    update!(connected: true)
   end
 
   def offline
-    update(connected: false)
+    update!(connected: false)
   end
 
   def increase_unread
-    update(unread_messages: unread_messages + 1)
+    increment!(:unread_messages)
   end
 
   def reset_unread
-    update(unread_messages: 0)
+    update!(unread_messages: 0)
   end
 end

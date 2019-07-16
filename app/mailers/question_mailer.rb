@@ -10,6 +10,6 @@ class QuestionMailer < ApplicationMailer
   private
 
   def confirm_send
-    @question.update(sent: true)
+    @question.update!(sent: true)
   end
 end

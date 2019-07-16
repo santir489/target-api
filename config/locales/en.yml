@@ -32,12 +32,15 @@
 en:  
   api:
     errors:
-      maximum_reached: 'Target maximum reached'
-      user_not_conversation: 'The user is not part of this conversation'
-      users_create_conversation: 'User already has a conversation with the user'
+      maximum_reached: 'Targets maximum reached'
+      users:
+        conversation:
+          create: 'User already has a conversation with the user'
+          belong: 'The user is not part of this conversation'     
   notification:
     target:
       compatible:
         message: 'Yey! You have a new match'
     chat:
-      unread_messages: 'You have new messages'
+      messages:
+        unread: 'You have new messages'      

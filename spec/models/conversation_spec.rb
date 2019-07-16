@@ -13,8 +13,8 @@ describe Conversation, type: :model do
     let(:user1) { create(:user) }
     let(:user2) { create(:user) }
 
-    let!(:conversation) { create(:convarsation_with_users, user1: user1, user2: user2) }
-    subject { create(:convarsation_with_users, user1: user2, user2: user1) }
+    let!(:conversation) { create(:conversation, :with_users, user1: user1, user2: user2) }
+    subject { create(:conversation, :with_users, user1: user2, user2: user1) }
 
     it 'not to be valid' do
       expect { subject }.to raise_error(ActiveRecord::RecordInvalid)

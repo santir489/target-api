@@ -11,7 +11,7 @@ describe Message, type: :model do
     let(:user) { create(:user) }
     let(:user2) { create(:user) }
     let(:user3) { create(:user) }
-    let!(:conversation) { create(:convarsation_with_users, user1: user3, user2: user2) }
+    let!(:conversation) { create(:conversation, :with_users, user1: user3, user2: user2) }
 
     subject { build(:message, user: user, conversation: conversation) }
 
@@ -21,7 +21,7 @@ describe Message, type: :model do
 
     it 'user not in conversation message' do
       subject.valid?
-      expect(subject.errors.messages[:user_in_conversation]).to include(I18n.t('api.errors.user_not_conversation'))
+      expect(subject.errors.messages[:user_in_conversation]).to include(I18n.t('api.errors.users.conversation.belong'))
     end
   end
 end

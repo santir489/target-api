@@ -45,10 +45,10 @@ class Conversation < ApplicationRecord
   def uniqueness_users
     return unless Conversation.conversation_exist(users)
 
-    errors.add(:uniqueness_users, I18n.t('api.errors.users_create_conversation'))
+    errors.add(:uniqueness_users, I18n.t('api.errors.users.conversation.create'))
   end
 
   def conversations_user(user)
-    conversations_users.select { |conversations_users| conversations_users.user.id == user.id }.first
+    conversations_users.select { |conversations_user| conversations_user.user.id == user.id }.first
   end
 end
