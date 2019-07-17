@@ -1,4 +1,8 @@
 ActiveAdmin.register User do
+  controller do
+    actions :index, :show, :destroy
+  end
+
   permit_params :email
 
   index do
@@ -7,16 +11,4 @@ ActiveAdmin.register User do
     column :email
     actions
   end
-
-  filter :email
-
-  form do |f|
-    f.inputs do
-      f.input :email
-      f.input :password
-      f.input :password_confirmation
-    end
-    f.actions
-  end
-
 end

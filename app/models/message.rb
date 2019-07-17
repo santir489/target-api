@@ -2,6 +2,8 @@ class Message < ApplicationRecord
   belongs_to :conversation
   belongs_to :user
 
+  delegate :email, to: :user, prefix: true
+
   validates :text, presence: true
   validate  :user_in_conversation, on: :create
 

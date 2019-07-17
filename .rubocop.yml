@@ -85,3 +85,7 @@ Style/ModuleFunction:
 
 Style/ReturnNil:
   Enabled: true
+
+Style/SymbolProc:
+  Exclude:
+    - app/admin/conversations.rb 
