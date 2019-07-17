@@ -3,6 +3,8 @@ ActiveAdmin.register Conversation do
     actions :index, :show
   end
 
+  filter :users
+
   index do
     selectable_column
     id_column

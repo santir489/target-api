@@ -1,6 +1,8 @@
 ActiveAdmin.register Target do
   permit_params :topic, :title, :length, :user_id, :latitude, :longitude
 
+  filter :topic, as: :select, collection: Target.topics
+
   index do
     selectable_column
     id_column
@@ -12,8 +14,6 @@ ActiveAdmin.register Target do
     column :longitude
     actions
   end
-
-  filter :email
 
   form do |f|
     f.inputs do

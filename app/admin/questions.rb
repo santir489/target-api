@@ -3,6 +3,8 @@ ActiveAdmin.register Question do
     actions :index, :show, :destroy
   end
 
+  filter :user
+
   index do
     selectable_column
     id_column
