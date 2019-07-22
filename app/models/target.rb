@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: targets
+#
+#  id         :bigint           not null, primary key
+#  title      :text             not null
+#  user_id    :bigint
+#  length     :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  topic      :integer          not null
+#  latitude   :float            not null
+#  longitude  :float            not null
+#
+
 class Target < ApplicationRecord
   acts_as_mappable  default_units: :km,
                     default_formula: :flat,

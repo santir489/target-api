@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: questions
+#
+#  id         :bigint           not null, primary key
+#  message    :text             not null
+#  email_from :text             not null
+#  email_to   :text             not null
+#  sent       :boolean          default(FALSE), not null
+#  user_id    :bigint
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Question < ApplicationRecord
   belongs_to :user
 
