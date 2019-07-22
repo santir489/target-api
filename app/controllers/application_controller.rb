@@ -4,6 +4,7 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordInvalid, with: :render_record_invalid
 
   def render_record_invalid(exception)
+    logger.error(exception)
     render json: { errors: exception.record.errors.as_json }, status: :bad_request
   end
 end

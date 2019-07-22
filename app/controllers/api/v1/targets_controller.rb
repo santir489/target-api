@@ -10,7 +10,10 @@ module Api
 
       def create
         @target = current_user.targets.create!(target_params)
-        @target.compatible_targets.each { |target| Conversation.create!(users: [current_user, target.user]) }
+        @target.compatible_targets.each do |target|
+          users = [current_user, target.user]
+          Conversation.create!(users: users) unless Conversation.conversation_exist(users)
+        end
       end
 
       def compatibles
