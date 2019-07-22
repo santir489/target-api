@@ -19,12 +19,6 @@ class RoomChannel < ApplicationCable::Channel
       user: current_user,
       text: message
     )
-
-    other_user = conversation.other_user(current_user)
-    return if conversation.connected_user(other_user)
-
-    conversation.increase_unread(other_user)
-    NotifyMessageJob.perform_later(other_user)
   end
 
   def conversation
